@@ -7,13 +7,21 @@ import javax.persistence.Entity
 class User(
     username: String,
     password: String,
+    name: String,
+    phoneNumber: String?,
     auth: String = "ROLE_USER",
 ) : BaseEntity() {
 
     var username = username
         private set
 
-    var password: String = password
+    var password = password
+        private set
+
+    var name = name
+        private set
+
+    var phoneNumber = phoneNumber
         private set
 
     var auth = auth
@@ -26,7 +34,4 @@ class User(
         this.password = passwordEncoder.encode(this.password)
     }
 
-    fun assignRole() {
-        this.auth = "ROLE_USER"
-    }
 }

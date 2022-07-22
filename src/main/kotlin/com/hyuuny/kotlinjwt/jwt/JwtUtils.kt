@@ -21,6 +21,8 @@ class JwtUtils(private val userDetailsService: UserDetailsServiceImpl) {
 
     fun createToken(username: String): String {
         val claims: Claims = Jwts.claims();
+        claims["type"] = "JWT"
+        claims["alg"] = "HS256"
         claims["username"] = username
 
         return Jwts.builder()
