@@ -20,7 +20,7 @@ class JwtUtils(private val userDetailsService: UserDetailsServiceImpl) {
     lateinit var secret: String
 
     fun createToken(username: String): String {
-        val claims: Claims = Jwts.claims();
+        val claims: Claims = Jwts.claims()
         claims["type"] = "JWT"
         claims["alg"] = "HS256"
         claims["username"] = username

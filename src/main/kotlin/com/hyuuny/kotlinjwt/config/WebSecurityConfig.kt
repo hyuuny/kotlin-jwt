@@ -28,11 +28,8 @@ class WebSecurityConfig(
             .and()
             .addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
             .authorizeRequests()
-            .antMatchers("/", "/api/v1/users/signup", "/api/v1/auth").permitAll()
-            .antMatchers(HttpMethod.POST, "/api/v1/users/**")
-            .hasAnyRole("USER")
-            .antMatchers("/api/v1/admin/**")
-            .hasAnyRole("ADMIN")
+            .antMatchers(HttpMethod.GET, "/").permitAll()
+            .antMatchers(HttpMethod.POST, "/api/v1/auth", "/api/v1/users/signup").permitAll()
             .anyRequest().authenticated()
     }
 
